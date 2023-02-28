@@ -16,6 +16,8 @@ import {Connected} from '../Connected';
 import {Error, Key} from '../../types';
 import {Icon} from '../Icon';
 import {Text} from '../Text';
+import {useEventListener} from '../../utilities/use-event-listener';
+import {debounce} from '../../utilities/debounce';
 
 import {Resizer, Spinner, SpinnerProps} from './components';
 import styles from './TextField.scss';
@@ -229,6 +231,7 @@ export function TextField({
   const i18n = useI18n();
   const [height, setHeight] = useState<number | null>(null);
   const [focus, setFocus] = useState(Boolean(focused));
+  const [blurHandled, setBlurHandled] = useState(false);
   const isAfterInitial = useIsAfterInitialMount();
 
   const id = useUniqueId('TextField', idProp);
@@ -517,7 +520,67 @@ export function TextField({
     onKeyPress: handleKeyPress,
     onChange: !suggestion ? handleChange : undefined,
     onInput: suggestion ? handleChange : undefined,
+    onWheel: type === 'number' ? handleWheelBlur : undefined,
+    onMouseLeave: type === 'number' ? handleMouseLeave : undefined,
   });
+
+  // Approach 0
+  // blurs the input when scrolling over it, preventing the value from changing
+  // However focus is lost
+
+  function handleWheelBlurBasic(event: WheelEvent) {
+    if (focus && event.target instanceof HTMLInputElement) {
+      event.target.blur();
+    }
+  }
+
+  // Approach 1
+
+  // this prevents scrolling when hovering over an input, but does not allow the scroll to change the value.
+
+  // 1. Blurs the target
+  // 2. Restores visual focus on the inpit
+  // 3. Re-focuses the input once the mouse leaves the input
+
+  // Downside right now is that when you scroll when over a focussed input, but don't scroll out of the input, the input retains visual treatement for focus, but actually loses focus
+
+  function handleWheelBlur(event: WheelEvent) {
+    if (
+      focus &&
+      event.target instanceof HTMLInputElement
+      // && !blurHandled
+    ) {
+      // removes focus from the input to prevent value from changing
+      event.target.blur();
+      // sets focus to true, providing visual focus ring
+      setFocus(true);
+      // prevents multiple calls handleWheelBlur
+      // however because there is a delay in the handleMouseLeave setting state (as it fires after the scroll events)
+      // then this is not set to false in time, prevent this from being called again and the value may change
+      // setBlurHandled(true);
+    }
+  }
+
+  // Issue is that we scroll to the element when it is re-focused on
+  function handleMouseLeave() {
+    // focus the element if it has visual focus and isn't the active focused element
+    if (focus && document.activeElement !== inputRef.current) {
+      console.log('setting focus');
+      // set focus back to input
+      inputRef.current?.focus({preventScroll: true});
+      // reset blurHandled to enable handleWheelBlur to be called again
+      // setBlurHandled(false);
+    }
+  }
+
+  // Approach 2
+  // this prevents scrolling when hovering over an input, but does allow the scroll to change the value.
+
+  // function handleWheel(event: WheelEvent) {
+  //   event.stopPropagation();
+  // }
+
+  // useEventListener('wheel', handleWheel, ref);
 
   const inputWithVerticalContentMarkup = verticalContent ? (
     <div
