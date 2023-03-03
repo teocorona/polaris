@@ -16,7 +16,7 @@ import {Connected} from '../Connected';
 import {Error, Key} from '../../types';
 import {Icon} from '../Icon';
 import {Text} from '../Text';
-// import {useEventListener} from '../../utilities/use-event-listener';
+import {useEventListener} from '../../utilities/use-event-listener';
 import {debounce} from '../../utilities/debounce';
 
 import {Resizer, Spinner, SpinnerProps} from './components';
@@ -164,6 +164,7 @@ interface NonMutuallyExclusiveProps {
   onFocus?: (event?: React.FocusEvent) => void;
   /** Callback fired when input is blurred */
   onBlur?(event?: React.FocusEvent): void;
+  onWheel?(event?: WheelEvent): void;
 }
 
 export type MutuallyExclusiveSelectionProps =
@@ -227,6 +228,7 @@ export function TextField({
   onChange,
   onFocus,
   onBlur,
+  onWheel,
 }: TextFieldProps) {
   const i18n = useI18n();
   const [height, setHeight] = useState<number | null>(null);
@@ -480,47 +482,30 @@ export function TextField({
     }
   };
 
-  // Approach 0
-  // Blurs the input when scrolling over it, preventing the value from changing
-  // However focus is lost
-  function handleWheelBlurBasic(event: WheelEvent) {
-    if (focus && event.target instanceof HTMLInputElement) {
-      event.target.blur();
-    }
-  }
+  const debounceFocus = debounce((target: HTMLInputElement) => {
+    target.focus({preventScroll: true});
+  }, 100);
 
-  // Approach 1
-  // Prevents scrolling when hovering over an input, but does not allow the scroll to change the value.
-
-  // 1. Blurs the target
-  // 2. Restores focus on the input
-  function handleWheelBlur({target}: WheelEvent) {
-    if (focus && target instanceof HTMLInputElement) {
+  function handleWheelBlur(event: WheelEvent) {
+    const {target} = event;
+    if (target instanceof HTMLInputElement) {
       target.blur();
-      // ensure execution to refocus target occurs after blur.
-      setTimeout(() => {
-        target?.focus({preventScroll: true});
-      }, 0);
+      setFocus(true);
+      debounceFocus(target);
     }
   }
 
-  const handleWheelBlurredDebounced = debounce(handleWheelBlur, 500, {
-    leading: true,
-  });
+  useEventListener('wheel', handleOnWheel, inputRef);
 
-  function handleMouseLeave() {
-    if (focus && document.activeElement !== inputRef.current) {
-      inputRef.current?.focus({preventScroll: true});
+  function handleOnWheel(event: WheelEvent) {
+    if (document.activeElement === event.target && type === 'number') {
+      if (onWheel) {
+        onWheel(event);
+      } else {
+        handleWheelBlur(event);
+      }
     }
   }
-
-  // Approach 2
-  // Prevents scrolling when hovering over an input, but does allow the scroll to change the value.
-  // function handleWheel(event: WheelEvent) {
-  //   event.stopPropagation();
-  // }
-
-  // useEventListener('wheel', handleWheel, inputRef);
 
   const input = createElement(multiline ? 'textarea' : 'input', {
     name,
@@ -561,8 +546,6 @@ export function TextField({
     onKeyPress: handleKeyPress,
     onChange: !suggestion ? handleChange : undefined,
     onInput: suggestion ? handleChange : undefined,
-    onWheel: type === 'number' ? handleWheelBlur : undefined,
-    // onMouseLeave: type === 'number' ? handleMouseLeave : undefined,
   });
 
   const inputWithVerticalContentMarkup = verticalContent ? (
