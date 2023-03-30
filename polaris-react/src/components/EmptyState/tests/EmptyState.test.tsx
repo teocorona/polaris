@@ -7,7 +7,7 @@ import {Text} from '../../Text';
 import {UnstyledLink} from '../../UnstyledLink';
 import {WithinContentContext} from '../../../utilities/within-content-context';
 import {EmptyState} from '../EmptyState';
-import {Inline} from '../../Inline';
+import {Inline} from '../../HorizontalStack';
 
 describe('<EmptyState />', () => {
   let imgSrc =

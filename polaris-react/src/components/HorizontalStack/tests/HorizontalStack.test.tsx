@@ -1,9 +1,9 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-import {Inline} from '../Inline';
+import {HorizontalStack} from '../HorizontalStack';
 
-describe('<Inline />', () => {
+describe('<HorizontalStack />', () => {
   const childText = 'Child';
   const renderChildren = () =>
     [0, 1].map((i) => (
@@ -23,7 +23,7 @@ describe('<Inline />', () => {
 
     expect(stack).toContainReactComponent('div', {
       style: expect.objectContaining({
-        '--pc-inline-wrap': 'wrap',
+        '--pc-horizontal-stack-wrap': 'wrap',
       }) as React.CSSProperties,
     });
   });
@@ -37,10 +37,10 @@ describe('<Inline />', () => {
 
     expect(stack).toContainReactComponent('div', {
       style: expect.objectContaining({
-        '--pc-inline-align': 'center',
-        '--pc-inline-block-align': 'start',
-        '--pc-inline-wrap': 'wrap',
-        '--pc-inline-gap-xs': 'var(--p-space-10)',
+        '--pc-horizontal-stack-align': 'center',
+        '--pc-horizontal-stack-block-align': 'start',
+        '--pc-horizontal-stack-wrap': 'wrap',
+        '--pc-horizontal-stack-gap-xs': 'var(--p-space-10)',
       }) as React.CSSProperties,
     });
   });
@@ -52,9 +52,9 @@ describe('<Inline />', () => {
 
     expect(stack).toContainReactComponent('div', {
       style: expect.objectContaining({
-        '--pc-inline-wrap': 'wrap',
-        '--pc-inline-gap-xs': 'var(--p-space-2)',
-        '--pc-inline-gap-md': 'var(--p-space-8)',
+        '--pc-horizontal-stack-wrap': 'wrap',
+        '--pc-horizontal-stack-gap-xs': 'var(--p-space-2)',
+        '--pc-horizontal-stack-gap-md': 'var(--p-space-8)',
       }) as React.CSSProperties,
     });
   });

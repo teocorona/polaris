@@ -3,7 +3,7 @@ import React from 'react';
 import type {ComplexAction} from '../../../../types';
 import {buttonsFrom} from '../../../Button';
 import {Box} from '../../../Box';
-import {Inline} from '../../../Inline';
+import {Inline} from '../../../HorizontalStack';
 
 export interface FooterProps {
   /** Primary action */

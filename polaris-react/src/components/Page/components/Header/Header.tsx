@@ -27,7 +27,7 @@ import {ActionMenu, hasGroupsWithActions} from '../../../ActionMenu';
 import {isInterface} from '../../../../utilities/is-interface';
 import {isReactElement} from '../../../../utilities/is-react-element';
 import {Box} from '../../../Box';
-import {Inline} from '../../../Inline';
+import {Inline} from '../../../HorizontalStack';
 
 import {Title} from './components';
 import type {TitleProps} from './components';

@@ -8,7 +8,7 @@ import {buttonFrom} from '../Button';
 import {Image} from '../Image';
 import {Text} from '../Text';
 import {AlphaStack} from '../AlphaStack';
-import {Inline} from '../Inline';
+import {Inline} from '../HorizontalStack';
 
 import styles from './EmptyState.scss';
 

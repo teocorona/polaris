@@ -5,7 +5,7 @@ import {Modal} from '../../../Modal';
 import {TextField} from '../../../TextField';
 import {Form} from '../../../Form';
 import {FormLayout} from '../../../FormLayout';
-import {Inline} from '../../../Inline';
+import {Inline} from '../../../HorizontalStack';
 import {Button} from '../../../Button';
 import {focusFirstFocusableNode} from '../../../../utilities/focus';
 import {useIsTouchDevice} from '../../../../utilities/use-is-touch-device';

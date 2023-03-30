@@ -8,7 +8,7 @@ import {Button} from '../../../Button';
 import {AlphaStack} from '../../../AlphaStack';
 import {Icon} from '../../../Icon';
 import {Text} from '../../../Text';
-import {Inline} from '../../../Inline';
+import {Inline} from '../../../HorizontalStack';
 import {UnstyledButton} from '../../../UnstyledButton';
 import {useBreakpoints} from '../../../../utilities/breakpoints';
 import {classNames} from '../../../../utilities/css';

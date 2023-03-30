@@ -17,7 +17,7 @@ type BlockAlign = 'start' | 'center' | 'end' | 'baseline' | 'stretch';
 
 type Gap = ResponsiveProp<SpacingSpaceScale>;
 
-export interface InlineProps extends React.AriaAttributes {
+export interface HorizontalStackProps extends React.AriaAttributes {
   children?: React.ReactNode;
   /** Horizontal alignment of children */
   align?: Align;
@@ -35,22 +35,22 @@ export interface InlineProps extends React.AriaAttributes {
   wrap?: boolean;
 }
 
-export const Inline = function Inline({
+export const HorizontalStack = function HorizontalStack({
   align,
   blockAlign,
   gap,
   wrap = true,
   children,
-}: InlineProps) {
+}: HorizontalStackProps) {
   const style = {
-    '--pc-inline-align': align,
-    '--pc-inline-block-align': blockAlign,
-    '--pc-inline-wrap': wrap ? 'wrap' : 'nowrap',
-    ...getResponsiveProps('inline', 'gap', 'space', gap),
+    '--pc-horizontal-stack-align': align,
+    '--pc-horizontal-stack-block-align': blockAlign,
+    '--pc-horizontal-stack-wrap': wrap ? 'wrap' : 'nowrap',
+    ...getResponsiveProps('horizontal-stack', 'gap', 'space', gap),
   } as React.CSSProperties;
 
   return (
-    <div className={styles.Inline} style={style}>
+    <div className={styles.HorizontalStack} style={style}>
       {children}
     </div>
   );

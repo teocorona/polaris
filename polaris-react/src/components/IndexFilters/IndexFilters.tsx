@@ -6,7 +6,7 @@ import {classNames} from '../../utilities/css';
 import {useEventListener} from '../../utilities/use-event-listener';
 import {useToggle} from '../../utilities/use-toggle';
 import {useOnValueChange} from '../../utilities/use-on-value-change';
-import {Inline} from '../Inline';
+import {Inline} from '../HorizontalStack';
 import {Spinner} from '../Spinner';
 import {AlphaFilters} from '../AlphaFilters';
 import type {AlphaFiltersProps} from '../AlphaFilters';

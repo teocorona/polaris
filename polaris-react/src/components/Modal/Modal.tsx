@@ -8,7 +8,7 @@ import {WithinContentContext} from '../../utilities/within-content-context';
 import {wrapWithComponent} from '../../utilities/components';
 import {Backdrop} from '../Backdrop';
 import {Box} from '../Box';
-import {Inline} from '../Inline';
+import {Inline} from '../HorizontalStack';
 import {Scrollable} from '../Scrollable';
 import {Spinner} from '../Spinner';
 import {Portal} from '../Portal';

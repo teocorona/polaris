@@ -2,7 +2,7 @@ import React from 'react';
 
 import {useI18n} from '../../utilities/i18n';
 import {Box} from '../Box';
-import {Inline} from '../Inline';
+import {Inline} from '../HorizontalStack';
 import {AlphaStack} from '../AlphaStack';
 
 import styles from './SkeletonPage.scss';

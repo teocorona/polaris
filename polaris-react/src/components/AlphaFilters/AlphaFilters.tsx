@@ -11,7 +11,7 @@ import {UnstyledButton} from '../UnstyledButton';
 import {classNames} from '../../utilities/css';
 import type {AppliedFilterInterface, FilterInterface} from '../../types';
 import {Link} from '../Link';
-import {Inline} from '../Inline';
+import {Inline} from '../HorizontalStack';
 import {Box} from '../Box';
 import {Spinner} from '../Spinner';
 

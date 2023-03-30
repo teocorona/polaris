@@ -13,7 +13,7 @@ import type {
 } from '../../types';
 import {ActionList} from '../ActionList';
 import {Popover} from '../Popover';
-import {Inline} from '../Inline';
+import {Inline} from '../HorizontalStack';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
 

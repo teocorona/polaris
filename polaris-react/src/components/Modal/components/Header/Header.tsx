@@ -3,7 +3,7 @@ import React from 'react';
 import {Box} from '../../../Box';
 import {CloseButton} from '../CloseButton';
 import {Columns} from '../../../Columns';
-import {Inline} from '../../../Inline';
+import {Inline} from '../../../HorizontalStack';
 import {Text} from '../../../Text';
 
 export interface HeaderProps {

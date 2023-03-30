@@ -9,7 +9,7 @@ import {Badge} from '../../../Badge';
 import {Text} from '../../../Text';
 import styles from '../../ActionList.scss';
 import {handleMouseUpByBlurring} from '../../../../utilities/focus';
-import {Inline} from '../../../Inline';
+import {Inline} from '../../../HorizontalStack';
 import {Box} from '../../../Box';
 
 export type ItemProps = ActionListItemDescriptor;

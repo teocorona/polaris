@@ -6,7 +6,7 @@ import {buttonFrom} from '../Button';
 import {SettingAction} from '../SettingAction';
 import {AlphaCard} from '../AlphaCard';
 import {Box} from '../Box';
-import {Inline} from '../Inline';
+import {Inline} from '../HorizontalStack';
 import {Text} from '../Text';
 import {AlphaStack} from '../AlphaStack';
 

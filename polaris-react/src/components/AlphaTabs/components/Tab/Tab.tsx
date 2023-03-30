@@ -34,7 +34,7 @@ import {Popover} from '../../../Popover';
 import {ActionList} from '../../../ActionList';
 import {Modal} from '../../../Modal';
 import {Badge} from '../../../Badge';
-import {Inline} from '../../../Inline';
+import {Inline} from '../../../HorizontalStack';
 import {Text} from '../../../Text';
 import type {AlphaTabPropsWithAddedMethods, AlphaTabAction} from '../../types';
 import styles from '../../AlphaTabs.scss';

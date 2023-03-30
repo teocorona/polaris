@@ -5,7 +5,7 @@ import {SearchMinor, FilterMinor} from '@shopify/polaris-icons';
 import {Icon} from '../../../Icon';
 import {Tooltip} from '../../../Tooltip';
 import {Text} from '../../../Text';
-import {Inline} from '../../../Inline';
+import {Inline} from '../../../HorizontalStack';
 import {FilterButton} from '../FilterButton';
 
 export interface SearchFilterButtonProps {
