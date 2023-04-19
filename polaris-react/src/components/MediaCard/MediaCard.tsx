@@ -15,7 +15,7 @@ import {LegacyStack} from '../LegacyStack';
 import {Box} from '../Box';
 import {HorizontalStack} from '../HorizontalStack';
 
-import styles from './MediaCard.scss';
+import styles from './MediaCard.module.scss';
 
 type Size = 'small' | 'medium';
 

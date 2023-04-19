@@ -10,7 +10,7 @@ import {classNames} from '../../utilities/css';
 
 import {TooltipOverlay} from './components';
 import type {TooltipOverlayProps} from './components';
-import styles from './Tooltip.scss';
+import styles from './Tooltip.module.scss';
 
 export type Width = 'default' | 'wide';
 export type Padding = 'default' | Extract<SpaceScale, '4'>;
