@@ -4,7 +4,7 @@ import {AppProvider} from '../src';
 import enTranslations from '../locales/en.json';
 import {GridOverlay} from './GridOverlay';
 import {RenderPerformanceProfiler} from './RenderPerformanceProfiler';
-import {gridOptions} from './manager';
+import {gridOptions} from './addons/global-controls-panel/manager';
 import {breakpoints} from '@shopify/polaris-tokens';
 
 function StrictModeDecorator(Story, context) {
@@ -64,7 +64,7 @@ export const globalTypes = {
         {title: 'Disabled', value: false},
         {title: 'Enabled', value: true},
       ],
-      showName: true,
+      title: 'React.StrictMode',
     },
   },
   profiler: {
@@ -75,7 +75,7 @@ export const globalTypes = {
         {title: 'Disabled', value: false},
         {title: 'Enabled', value: true},
       ],
-      showName: true,
+      title: 'React.Profiler',
     },
   },
   ...gridOptions,
