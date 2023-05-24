@@ -38,13 +38,14 @@
       transition: box-shadow var(--p-motion-duration-100) var(--p-motion-ease);
       border-radius: $border-radius;
       @content;
-    }
 
-    #{$se23} &::after {
+      #{$se23} & {
       top: calc(-1 * var(--p-space-025));
       right: calc(-1 * var(--p-space-025));
       bottom: calc(-1 * var(--p-space-025));
       left: calc(-1 * var(--p-space-025));
+        border-radius: var(--p-border-radius-2);
+      }
     }
   } @else if $style == 'focused' {
     &::after {
