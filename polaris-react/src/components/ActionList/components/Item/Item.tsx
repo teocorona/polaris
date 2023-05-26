@@ -168,6 +168,7 @@ export const TruncateText = ({children}: {children: string}) => {
       preferredPosition="above"
       hoverDelay={1000}
       content={children}
+      dismissOnMouseOut
     >
       <Text as="span" truncate>
         {children}
