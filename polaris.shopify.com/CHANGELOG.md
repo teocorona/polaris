@@ -1,5 +1,18 @@
 # polaris.shopify.com
 
+## 0.55.0
+
+### Minor Changes
+
+- [#9311](https://github.com/Shopify/polaris/pull/9311) [`b6f2d7928`](https://github.com/Shopify/polaris/commit/b6f2d7928f40e4eca4a30718ad0d1f56c6dfd776) Thanks [@lgriffee](https://github.com/lgriffee)! - Created a "What's new" page for v11 token changes.
+
+### Patch Changes
+
+- [#8840](https://github.com/Shopify/polaris/pull/8840) [`a7569b7f5`](https://github.com/Shopify/polaris/commit/a7569b7f5ac44acf35ead6f128a09d96e2a11433) Thanks [@alex-page](https://github.com/alex-page)! - Updated Colors page with v11 content
+
+- Updated dependencies [[`7e21fe093`](https://github.com/Shopify/polaris/commit/7e21fe093c021d0531e256b678221cfbb79e4412), [`e7d836819`](https://github.com/Shopify/polaris/commit/e7d836819ac33936136df2a79093c2a0e73146b4), [`e823538ad`](https://github.com/Shopify/polaris/commit/e823538ad27460bc026d37132713462700e577ea)]:
+  - @shopify/polaris@11.0.2
+
 ## 0.54.1
 
 ### Patch Changes
