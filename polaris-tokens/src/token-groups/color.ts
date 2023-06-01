@@ -98,7 +98,10 @@ export type ColorBorderAlias =
   | 'border-strong-hover'
   | 'border-subdued'
   | 'border-success'
-  | 'border-success-subdued';
+  | 'border-success-subdued'
+  | ColorExperimentalBorderAlias;
+
+export type ColorExperimentalBorderAlias = 'experimental-border-input-active';
 
 export type ColorIconAlias =
   | 'icon'
@@ -856,6 +859,9 @@ export const color: {
     description: '',
   },
   // Experimental tokens
+  'color-experimental-border-input-active': {
+    value: colorsExperimental.gray[16](),
+  },
   'color-experimental-bg-input-hover': {
     value: colorsExperimental.gray[3](),
     description: '',
